@@ -132,7 +132,7 @@ This project was last updated in 2023, so building it with a current Rust toolch
 
 * Install Rust via [rustup](https://rustup.rs) — the Rust-GPU shader build needs the pinned `nightly-2023-07-08` toolchain, which rustup will download automatically on first use.
 * `cargo build --release --bin view` builds the viewer with the stable toolchain. The `.cargo/config.toml` uses the modern `-Cllvm-args=--inline-threshold=275` syntax, and the bundled `com-rs` patch (`vendor/com-rs`) keeps the DXIL compiler binding compiling on current rustc.
-* The Rust-GPU shaders are pre-compiled into `assets/rust-shaders-compiled/`, so the app runs even without the nightly toolchain. When it is present, `view` rebuilds them in the background at startup (rebuild them manually via `cargo run --release` in `crates/bin/rust-shader-builder/`).
+* The Rust-GPU shaders are pre-compiled into `assets/rust-shaders-compiled/`, so the app runs even without the nightly toolchain. On startup `view` only tries to rebuild them when the shader sources have been modified, or when the `KAJIYA_BUILD_RUST_SHADERS=1` environment variable is set; without the pinned toolchain installed it silently uses the precompiled ones (rebuild manually via `cargo run --release` in `crates/bin/rust-shader-builder/`).
 * Keep `Cargo.lock` at version 3: the 2023-era nightly cargo cannot parse version 4, and any `cargo update` will bump it again (revert with `sed -i 's/^version = 4$/version = 3/' Cargo.lock`). Do not `cargo update` `glam` past 0.22 — `spirv-std` at the pinned rust-gpu revision needs it unified at 0.22.
 * Run the binary from the project root, or copy `crates/bin/view/keymap.toml` next to it (`keymap.toml` is looked up in the current directory first, then next to the executable).
 
