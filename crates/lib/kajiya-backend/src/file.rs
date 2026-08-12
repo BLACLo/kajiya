@@ -64,14 +64,8 @@ pub fn canonical_path_from_vfs(path: impl Into<PathBuf>) -> anyhow::Result<PathB
         }
     }
 
-    if path.strip_prefix("/").is_ok() {
-        anyhow::bail!(
-            "No vfs mount point for {:?}. Current mount points: {:#?}",
-            path,
-            VFS_MOUNT_POINTS.lock()
-        );
-    }
-
+    // An absolute path that matches no mount point is a plain filesystem path (e.g. texture
+    // files referenced from a glTF, or drag'n'dropped assets), so let it through.
     Ok(path)
 }
 
