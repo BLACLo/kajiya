@@ -10,13 +10,16 @@
 
 **Experimental real-time global illumination renderer made with Rust and Vulkan**
 
-[![Embark](https://img.shields.io/badge/embark-open%20source-blueviolet.svg)](https://embark.dev)
-[![Embark](https://img.shields.io/badge/discord-ark-%237289da.svg?logo=discord)](https://discord.gg/dAuKfZS)
-[![dependency status](https://deps.rs/repo/github/EmbarkStudios/kajiya/status.svg)](https://deps.rs/repo/github/EmbarkStudios/kajiya)
-[![Build status](https://github.com/EmbarkStudios/kajiya/workflows/CI/badge.svg)](https://github.com/EmbarkStudios/kajiya/actions)
+[![Build status](https://github.com/BLACLo/kajiya/workflows/CI/badge.svg)](https://github.com/BLACLo/kajiya/actions)
+[![dependency status](https://deps.rs/repo/github/BLACLo/kajiya/status.svg)](https://deps.rs/repo/github/BLACLo/kajiya)
+
+> **Semi-active fork.** The upstream project is no longer maintained; this fork keeps
+> `kajiya` buildable and runnable with modern Rust toolchains. See
+> [Notes on modern toolchains](#notes-on-modern-toolchains).
+
 </div>
 
-_This project is no longer maintained._
+_This project is no longer maintained by its original author._
 
 It was a spare-time experiment by one guy who worked at Embark at the time (on non-rendering stuff). If you're looking to learn some artisanal hacks, this might be useful - just don't look too deep into the code 🐙
 
