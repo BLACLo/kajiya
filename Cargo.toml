@@ -27,6 +27,8 @@ exclude = [
 # Official ray-tracing extensions
 rspirv = { git = "https://github.com/gfx-rs/rspirv.git", rev = "dae552c" }
 spirv_headers = { git = "https://github.com/gfx-rs/rspirv.git", rev = "dae552c" }
+# com-rs 0.2.1 uses `extern "stdcall"`, which newer rustc rejects on non-Windows
+com-rs = { path = "vendor/com-rs" }
 
 [profile.release]
 debug = 1

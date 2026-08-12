@@ -2,12 +2,12 @@
 rustflags = [
 #    "-C", "link-arg=-fuse-ld=lld",
     "-C", "opt-level=z",
-    "-C", "inline-threshold=275",
+    "-Cllvm-args=--inline-threshold=275",
 ]
 
 [target.x86_64-pc-windows-msvc]
 # linker = "lld-link.exe"
 rustflags = [
     "-C", "opt-level=z",
-    "-C", "inline-threshold=275",
+    "-Cllvm-args=--inline-threshold=275",
 ]

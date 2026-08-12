@@ -19,7 +19,17 @@ pub struct KeymapConfig {
 
 impl KeymapConfig {
     pub(crate) fn load(path: &Option<PathBuf>) -> anyhow::Result<Self> {
-        let path = path.clone().unwrap_or("keymap.toml".into());
+        let mut path = path.clone().unwrap_or("keymap.toml".into());
+        if !path.is_file() {
+            if let Ok(exe) = std::env::current_exe() {
+                if let Some(dir) = exe.parent() {
+                    let candidate = dir.join("keymap.toml");
+                    if candidate.is_file() {
+                        path = candidate;
+                    }
+                }
+            }
+        }
         let path = canonicalize(path).with_context(|| {
             "Failed to find keymap.toml. Make sure it is in the same directory as the executable."
         })?;
